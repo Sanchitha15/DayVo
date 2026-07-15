@@ -1142,5 +1142,6 @@ settingsSaveBtn.addEventListener('click', () => {
 
     localStorage.setItem('daybook-avatar', pendingAvatar);
     navAvatar.src = pendingAvatar;
+    showDashboard();
 });
  
