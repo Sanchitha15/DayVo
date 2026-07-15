@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dayvo</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.9.0/fonts/remixicon.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="style.css">
+    <link rel="style-variables" href="variables.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Felipa&family=Moon+Dance&display=swap" rel="stylesheet">
+    </head>
+<body>
+    <canvas id="bg-canvas"></canvas>
+    <div class="main">
+
+        <nav class="nav-bar">
+            <div class="logo" id="logo">
+                <img src="./images/Logo_light.png" class="light-theme-logo">
+                <img src="./images/Logo_Dark.png" class="dark-theme-logo">
+            </div>
+            <div class="nav-right">
+                <button class="theme" id="theme-btn"><i class="ri-sun-fill"id="theme-icon"></i></button>
+                <div class="avatar"><img src="./images/avatar/avatar-woman-1.png" class="img-avatar" id="nav-avatar"></div>
+            </div>
+        </nav>
+
+
+        <div class="dashboard-navigation">
+            <div class="section1 active">
+                <div class="banner" style="grid-area:box-1">
+                    <div class="main-msg">
+                        <h2 class="welcome-msg"></h2>
+                        <h4>Here's to a productive one</h4>
+                    </div>
+                    
+                </div>
+                <div class="weather" id="weather-card" style="grid-area:box-2">
+                    <div class="weather-left">
+                        <div class="weather-left-1" style="align-items: baseline;">
+                            <i class="ri-search-line" style="font-size: clamp(0.8rem, 1.5vw,1.8rem);"></i>
+                            <input class="search-input" id="city-search" type="search" placeholder="city...">
+                        </div>
+                        <div class="weather-left-2" style="align-items: end;">
+                            <i class="ri-water-percent-line" style="font-size: clamp(0.8rem,1.5vw, 1.8rem);"></i>
+                            <h4 class="humidity" id="humidity">22%</h4>
+                        </div>
+                    </div>
+                    <div class="weather-centre">
+                        <div class="weather-img" id="weather-img"></div>
+                        <div class="temp" id="temp"></div>
+                        <div class="main-weather" id="main-weather">eg:cloudy</div>
+                        <div class="city-name" id="city-name"></div>
+                    </div>
+                    <div class="weather-right">
+                        <div class="wind-speed">
+                            <i class="ri-windy-line"></i>
+                            <div class="speed-value" id="speed-value"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="time-date"  style="grid-area:box-3">
+                    <div class="time">00:00:00</div>
+                    <div class="calender">
+                        <div class="calendar-header" id="calendar-header"></div>
+                        <div class="calendar-weekdays" id="calendar-weekdays"></div>
+                        <div class="calendar-grid" id="calendar-grid"></div>
+                    </div>
+                </div>
+                <div class="pomorodo" style="grid-area:box-4">
+                    <div class="timer-1">
+                        <button class="focus" id="mode-btn">Focus</button>
+                        <button class="more"><i class="ri-arrow-right-line"></i></button>
+                    </div>
+                    <div class="timer-main"><p class="timer" id="timer">25:00</p></div>
+                    <div class="buttons">
+                        <button class="reset"><i class="ri-reset-left-fill"></i><span>Reset</span></button>
+                        <button class="start-pause"><i class="ri-play-fill"></i><span class="start">Start</span></button>
+                    </div>
+                    
+                </div>
+                <div class="settings"  style="grid-area:box-5">
+                    <div class="setting-header">
+                        <h3>Settings</h3>
+                        <button class="settings-more"><i class="ri-arrow-right-line"></i></button>
+                        
+                    </div>
+                    <div class="settings-main">
+                        <i class="ri-settings-4-fill"></i>
+                    </div>
+                </div>
+                
+            </div>
+
+            <div class="section2 active">
+                <div class="daily-goals" style="grid-area: box-1;">
+                    <div class="goals-card-header">
+                        <h3>Daily goals</h3>
+                        <button class="goals-more"><i class="ri-arrow-right-line"></i></button>
+                    </div>
+                    <div class="goals-progress-wrap">
+                        <div class="goals-progress-bar">
+                            <div class="goals-progress-fill" id="goals-progress-fill"></div>
+                        </div>
+                        <span class="goals-progress-text" id="goals-progress-text">0%</span>
+                    </div>
+                </div>
+                <div class="todo" style="grid-area: box-2;">
+                    <div class="to-do-card-header">
+                        <h3>To-do List</h3>
+                        <button class="todo-more"><i class="ri-arrow-right-line"></i></button>
+                    </div>
+                    <div class="task-list">
+
+                    </div>
+                </div>
+                <div class="daily-planner" style="grid-area: box-3;">
+                    <div class="planner-card-header">
+                        <h3>Daily planner</h3>
+                        <button class="planner-more" style="border:none; background-color: transparent;"><i class="ri-arrow-right-line"></i></button>
+                    </div>
+                    <div class="planner-card-content" id="planner-card-content"></div>
+                </div>
+                <div class="motivation" style="grid-area: box-4;">
+                    <p class="quote-text" id="quote-text"></p>
+                    <button class="quote-refresh" id="quote-refresh">
+                        <i class="ri-refresh-line"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="pomo-page" id="pomo-setting-page">
+                <div class="pomo-back-section">
+                    <button class="pomo-back"><i class="ri-arrow-left-line"></i></button>
+                    <div class="pomo-settings">
+                        <button class="pomo-set-btn"><i class="ri-settings-2-line"></i></button>
+                    </div>
+                </div>
+                
+                <div class="pomo-main">
+                    <div class="main-pomo-timer">
+                        <div class="pomo-mode">
+                            <button class="pomo-focus-mode">Focus</button>
+                            <button class="pomo-short-mode"> Short</button>
+                            <button class="pomo-long-mode">Long</button>
+                        </div>
+                        <div class="timer">
+                            <span class="active-timer">25:00</span>
+                        </div>
+                        <div class="pomo-pause-play">
+                            <div class="pomo-start">
+                                <button class="pomo-start-btn">Start</button>
+                            </div>
+                        
+                            <button class="pomo-restart"><i class="ri-skip-forward-fill"></i></button>
+                            
+                        </div>
+                    </div>
+                    <div class="pomorodo-settings-page">
+                        <div class="pomorodo-settings-page-sec1">
+                            <h2>Settings</h2>
+                            <i class="ri-close-line" id="pomo-setting-close"></i>
+                        </div>
+                        <div class="pomorodo-timer-setting">
+                            <div class="pomo-timer-focus">
+                                <label>Focus</label>
+                                <input type="number" min="10" max="60" value="25" class="focus-value">
+                            </div>
+                            <div class="pomo-timer-short-break">
+                                <label>Short-Break</label>
+                                <input type="number" min="2" max="10" value="5" class="short-break-value">
+                            </div>
+                            <div class="pomo-timer-long-break">
+                                <label>Long-Break</label>
+                                <input type="number" min="10" max="30" value="15" class="long-break-value">
+                            </div>
+                        </div>
+                        <label>Audio-volume</label>
+                        <input type="range" min="5" max="50" value="20" class="audio-volume-btn">
+                        <div class="save">
+                            <button class="pomo-setting-savebtn">Save Changes</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="todo-page">
+                <div class="todo-back-section">
+                    <button class="todo-back"><i class="ri-arrow-left-line"></i></button>
+                    <button class="todo-add-btn"><i class="ri-add-line"></i></button>
+                </div>
+                <div class="todo-main">
+
+                </div>
+            </div>
+            <div class="todo-form" style="display: none;">
+                <form>
+                    <div class="form-header">
+                        <h2>Add new task</h2>
+                        <button class="todo-form-cancel"><i class="ri-close-line"></i></button>
+                    </div>
+                    <label>Task</label>
+                    <input type="text" required class="task-title">
+                    <label>Priority</label>
+                    <select class="priority">
+                        <option value="high">High</option>
+                        <option value="medium">Medium</option>
+                        <option value="low">Low</option>
+                    </select>
+                    <label>Status</label>
+                    <select class="status">
+                        <option value="not-started">Not Started</option>
+                        <option value="in-progress">In-progress</option>
+                        <option value="done">Done</option>
+                    </select>
+                    <label>Due</label>
+                    <input type="date" class="due-date">
+                    <button class="submit-task">Add Task</button>
+                </form>
+            </div>
+            <div class="planner-page">
+                <div class="planner-back-section">
+                    <button class="planner-back"><i class="ri-arrow-left-line"></i></button>
+                </div>
+                <div class="planner-grid" id="planner-grid"></div>
+            </div>
+            <div class="goals-page">
+                <div class="goals-back-section">
+                    <button class="goals-back"><i class="ri-arrow-left-line"></i></button>
+                    <button class="goals-add-btn"><i class="ri-add-line"></i></button>
+                </div>
+                <div class="goals-main" id="goals-main"></div>
+            </div>
+            <div class="settings-page">
+                <div class="settings-back-section">
+                    <button class="settings-back"><i class="ri-arrow-left-line"></i></button>
+                </div>
+
+                <h3 class="settings-section-title">Your name</h3>
+                <input type="text" id="username-input" class="username-input" placeholder="Enter your name">
+
+                <h3 class="settings-section-title">Choose your avatar</h3>
+                <div class="avatar-grid" id="avatar-grid">
+                    <button class="avatar-tile" data-avatar="./images/avatar/avatar-man-1.png">
+                        <img src="./images/avatar/avatar-man-1.png" alt="Avatar 1">
+                    </button>
+                    <button class="avatar-tile" data-avatar="./images/avatar/avatar-man-2.png">
+                        <img src="./images/avatar/avatar-man-2.png" alt="Avatar 2">
+                    </button>
+                    <button class="avatar-tile" data-avatar="./images/avatar/avatar-man-3.png">
+                        <img src="./images/avatar/avatar-man-3.png" alt="Avatar 3">
+                    </button>
+                    <button class="avatar-tile" data-avatar="./images/avatar/avatar-man-4.png">
+                        <img src="./images/avatar/avatar-man-4.png" alt="Avatar 4">
+                    </button>
+                    <button class="avatar-tile" data-avatar="./images/avatar/avatar-woman-1.png">
+                        <img src="./images/avatar/avatar-woman-1.png" alt="Avatar 5">
+                    </button>
+                    <button class="avatar-tile" data-avatar="./images/avatar/avatar-woman-2.png">
+                        <img src="./images/avatar/avatar-woman-2.png" alt="Avatar 6">
+                    </button>
+                    <button class="avatar-tile" data-avatar="./images/avatar/avatar-woman-3.png">
+                        <img src="./images/avatar/avatar-woman-3.png" alt="Avatar 7">
+                    </button>
+                    <button class="avatar-tile" data-avatar="./images/avatar/avatar-woman-4.png">
+                        <img src="./images/avatar/avatar-woman-4.png" alt="Avatar 8">
+                    </button>
+                </div>
+
+                <button class="settings-save-btn" id="settings-save-btn">Save changes</button>
+            </div>
+        </div>
+    </div>
+
+    
+    <script src="./script.js"></script>
+</body>
+</html>
